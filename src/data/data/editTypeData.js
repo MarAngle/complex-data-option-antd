@@ -1,4 +1,4 @@
-import _func from '@/maindata/func/index'
+import _func from 'complex-func'
 import timeUtils from './timeUtils'
 
 let editTypeData = {

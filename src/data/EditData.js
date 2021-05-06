@@ -1,4 +1,4 @@
-import _func from '@/maindata/func/index'
+import _func from 'complex-func'
 import { BaseData, PaginationData, InterfaceData } from 'complex-data'
 import editTypeData from './data/editTypeData'
 

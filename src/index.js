@@ -1,6 +1,6 @@
 import { option } from 'complex-data'
 import EditData from './data/EditData'
-import _func from '@/maindata/func/index'
+import _func from 'complex-func'
 
 option.setData({
   list: {
