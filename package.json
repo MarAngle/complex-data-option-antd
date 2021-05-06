@@ -1,6 +1,6 @@
 {
   "name": "complex-data-option-antd",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "a option for complex-data by antd",
   "main": "index.js",
   "repository": {
@@ -8,13 +8,12 @@
     "url": "https://github.com/MarAngle/complex-data-option-antd.git"
   },
   "dependencies": {
-    "complex-func": "^2.0.3",
-    "complex-data": "^2.0.0"
+    "complex-func": "^2.0.4",
+    "complex-data": "^2.0.2"
   },
   "devDependencies": {
     "webpack": "^5.36.1",
-    "webpack-cli": "^4.6.0",
-    "ant-design-vue-pro": "^3.0.1"
+    "webpack-cli": "^4.6.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
