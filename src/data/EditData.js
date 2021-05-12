@@ -141,10 +141,10 @@ class EditData extends BaseData {
       if (editdata.pagination) {
         if (!this.func.page) {
           if (!this.getData) {
-            this._printInfo('选择器存在分页器时需要定义page回调或者getData函数供分页时调用')
+            this.printMsg('选择器存在分页器时需要定义page回调或者getData函数供分页时调用')
           }
           this.func.page = (act, data) => {
-            this.loadData(true, this.option.search.value).then(res => {}, err => { this._printInfo('loadData失败！', 'error', err) })
+            this.loadData(true, this.option.search.value).then(res => {}, err => { this.printMsg('loadData失败！', 'error', { data: err }) })
           }
         }
         let paginationOption = editdata.pagination
@@ -223,7 +223,7 @@ class EditData extends BaseData {
                 this.on.search('')
               } else {
                 // 不强制加载
-                this.loadData(false, this.option.search.value).then(res => {}, err => { this._printInfo('loadData失败！', 'error', err) })
+                this.loadData(false, this.option.search.value).then(res => {}, err => { this.printMsg('loadData失败！', 'error', { data: err }) })
 
                 // if (this.getValueData('initdata') === this.getValueData('defaultdata')) {
                 //   // 非reset模式下，initdata与defaultdata数据相同，触发
@@ -285,7 +285,7 @@ class EditData extends BaseData {
           this.func.searchStart = (value) => {
             this.option.search.value = value || ''
             if (this.func.autoSearch('init')) {
-              this.loadData(true, this.option.search.value).then(res => {}, err => { this._printInfo('loadData失败！', 'error', err) })
+              this.loadData(true, this.option.search.value).then(res => {}, err => { this.printMsg('loadData失败！', 'error', { data: err }) })
             }
           }
         }
@@ -358,7 +358,7 @@ class EditData extends BaseData {
       this.option.fileUpload = editdata.option.fileUpload || false
       this.option.layout = editdata.option.layout === undefined ? 'auto' : editdata.option.layout
       if (this.option.upload && !this.option.fileUpload) {
-        this._printInfo('上传插件需要定义上传方法:fileUpload=>option')
+        this.printMsg('上传插件需要定义上传方法:fileUpload=>option')
       }
       if (this.option.multiple) {
         this.setValueToArray()
@@ -461,6 +461,15 @@ class EditData extends BaseData {
   }
   getValueData(prop = 'defaultdata') {
     return this.value[prop]
+  }
+  _selfName () {
+    return `(${this.constructor.name})`
+  }
+  printMsg(info, type = 'error', option) {
+    _func.printMsgAct(this._selfName() + ':' + info, type, option)
+  }
+  toString() {
+    return this._selfName()
   }
 }
 export default EditData
