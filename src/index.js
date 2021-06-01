@@ -60,7 +60,10 @@ let optionData = {
           prop: ditem.prop,
           label: ditem.getInterface('label', mod),
           showtype: ditem.getInterface('showtype', mod),
-          layout: ditem.getLayout(mod)
+          layout: ditem.getLayout(mod),
+          option: {
+            ...ditem[mod]
+          }
         }
         let target = ditem.triggerFunc('show', targetitem[ditem.prop], {
           targetitem: targetitem,
@@ -105,7 +108,6 @@ let optionData = {
     change: {
       type: 'edit'
     }
-
   }
 }
 
