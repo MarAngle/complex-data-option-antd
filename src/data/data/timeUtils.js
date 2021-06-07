@@ -4,7 +4,7 @@ import moment from 'moment'
 _func.current.setCallback(function(currentDate, from) {
   _func.current.setData(moment(currentDate), 'moment')
 })
-_func.current.setOffset(1000 * 10)
+_func.current.setOffset(1000 * 60)
 // 重要，此处函数基本赋值操作，this指向不确定，引用时不能使用this
 
 const timeUtils = {
