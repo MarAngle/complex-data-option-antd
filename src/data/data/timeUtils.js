@@ -1,7 +1,10 @@
 import _func from 'complex-func'
 import moment from 'moment'
-import currentDate from './currentDate'
 
+_func.current.setCallback(function(currentDate, from) {
+  _func.current.setData(moment(currentDate), 'moment')
+})
+_func.current.setOffset(1000 * 10)
 // 重要，此处函数基本赋值操作，this指向不确定，引用时不能使用this
 
 const timeUtils = {
@@ -20,7 +23,7 @@ const timeUtils = {
   },
   getTime: function (time) {
     if (time == 'current') {
-      return currentDate.getCurrent()
+      return _func.current.getData('moment')
     } else {
       return time
     }
