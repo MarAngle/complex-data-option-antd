@@ -104,6 +104,7 @@
 </template>
 
 <script>
+import _func from 'complex-func'
 import InstrcutionView from './InstrcutionView'
 
 export default {
@@ -134,7 +135,7 @@ export default {
     checkShow(type) {
       let show = true
       if (type) {
-        if (this._func.getType(type) != 'array') {
+        if (_func.getType(type) != 'array') {
           type = [type]
         }
         show = type.indexOf(this.type) > -1
