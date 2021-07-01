@@ -1,5 +1,6 @@
-### 2.0.5ing
+### 2.0.5
 - 删除currentDate相关，使用complex-func的current相关
+- index更改
 
 ### 2.0.4
 - info相关的设置通过option暴露初始设置值,list会暴露到跟节点，edit可通过extra传递
