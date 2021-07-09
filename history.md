@@ -1,3 +1,6 @@
+### 2.0.6
+- 依赖固定版本号
+
 ### 2.0.5
 - 删除currentDate相关，使用complex-func的current相关
 - index更改
