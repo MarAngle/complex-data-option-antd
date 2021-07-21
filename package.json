@@ -1,6 +1,6 @@
 {
   "name": "complex-data-option-antd",
-  "version": "2.0.6",
+  "version": "2.1.0",
   "description": "a option for complex-data by antd",
   "main": "index.js",
   "repository": {
@@ -8,7 +8,7 @@
     "url": "https://github.com/MarAngle/complex-data-option-antd.git"
   },
   "dependencies": {
-    "complex-data": "^2.0.13"
+    "complex-data": "~2.1.0"
   },
   "devDependencies": {
     "webpack": "^5.36.1",
