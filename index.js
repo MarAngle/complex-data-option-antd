@@ -92,6 +92,7 @@ let optionData = {
           layout: ditem.getLayout(mod),
           edit: ditem.mod[mod]
         }
+        pitem.edit.readyData().then(res => {}, err => { console.error(err) })
         return pitem
       },
       build: function (data, mod, payload) {

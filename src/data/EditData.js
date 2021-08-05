@@ -224,14 +224,6 @@ class EditData extends BaseData {
               } else {
                 // 不强制加载
                 this.loadData(false, this.option.search.value).then(res => {}, err => { this.printMsg('loadData失败！', 'error', { data: err }) })
-
-                // if (this.getValueData('initdata') === this.getValueData('defaultdata')) {
-                //   // 非reset模式下，initdata与defaultdata数据相同，触发
-                //   this.on.search('')
-                // } else if (this.getValueData('initdata') === this.getValueData('defaultdata')) {
-                //   // 非reset模式下，initdata与defaultdata数据相同，触发
-                //   this.on.search('')
-                // }
               }
             }
           }
@@ -415,15 +407,6 @@ class EditData extends BaseData {
         }
       }
     })
-    // for (let n in this.rules) {
-    //   let rule = this.rules[n]
-    //   if (rule.message === undefined && message) {
-    //     rule.message = message
-    //   }
-    //   if (!rule.trigger && trigger) {
-    //     rule.trigger = trigger
-    //   }
-    // }
   }
   initValue(editdata, typeOption) {
     if (_func.hasProp(editdata, 'defaultdata')) {
@@ -442,19 +425,34 @@ class EditData extends BaseData {
       this.value.resetdata = this.value.defaultdata
     }
   }
+  readyData() {
+    return new Promise((resolve, reject) => {
+      let needLoad = false
+      if (this.type == 'select' && !this.option.search.show && this.getData) {
+        // select非search模式下需要进行数据的加载
+        needLoad = true
+      }
+      if (needLoad) {
+        // search需要在打开阶段进行数据获取
+        this.loadData(this.reload).then(res => {
+          resolve(res)
+        }, err => {
+          reject(err)
+        })
+      } else {
+        resolve({ status: 'success' })
+      }
+    })
+  }
   setValueToArray() {
     let proplist = ['initdata', 'defaultdata', 'resetdata']
-    for (let n in proplist) {
+    for (let n = 0; n < proplist.length; n++) {
       let prop = proplist[n]
       let type = _func.getType(this.getValueData(prop))
       if (type != 'array') {
         this.setValueData([], prop)
       }
     }
-    // ???? 多于操作???
-    /// ------
-    /// -------!!!!!
-    this.setValueData([], 'defaultdata')
   }
   setValueData(data, prop = 'defaultdata') {
     this.value[prop] = data
