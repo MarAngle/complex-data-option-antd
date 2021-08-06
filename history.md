@@ -1,3 +1,6 @@
+### 2.1.2
+- 删除complex-data
+
 ### 2.1.1
 - Edit实现readyData，构建pageList时触发
 

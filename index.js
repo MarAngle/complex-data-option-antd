@@ -1,4 +1,3 @@
-import { option } from 'complex-data'
 import EditData from './src/data/EditData'
 import _func from 'complex-func'
 
@@ -92,7 +91,6 @@ let optionData = {
           layout: ditem.getLayout(mod),
           edit: ditem.mod[mod]
         }
-        pitem.edit.readyData().then(res => {}, err => { console.error(err) })
         return pitem
       },
       build: function (data, mod, payload) {
@@ -112,7 +110,7 @@ let optionData = {
   }
 }
 
-optionData.init = function(data = {}) {
+optionData.init = function(option, data = {}) {
   for (let n in data) {
     if (!this.data[n]) {
       this.data[n] = {}
